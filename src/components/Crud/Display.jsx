@@ -170,10 +170,10 @@ export default function Display() {
                     <h2>{item.title}</h2>
                     <p>{item.description}</p>
                     <Link to={`/Editproduct/${item._id}`}>
-                    <button type="button" class="btn btn-outline-success">Edit</button>
+                    <button type="button" className="btn btn-outline-success">Edit</button>
                     </Link>
                     
-                    <button type="button" class="btn btn-outline-danger" onClick={()=>{setDelete_id(item?._id);
+                    <button type="button" className="btn btn-outline-danger" onClick={()=>{setDelete_id(item?._id);
                               setIsDelete(true);}}>Delete</button>
                              
                   </div>
