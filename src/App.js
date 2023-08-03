@@ -9,17 +9,26 @@ import {
 } from "react-router-dom";
 import Header from './common/Header/Header';
 import Login from './components/Authentication/Login/Login';
-
 import Home from './components/Home/Home';
 import Product_create from './components/Crud/Product_create';
-import Display from './components/Crud/Display';
+// import Display from './components/Crud/Display';
 import Edit from './components/Crud/Edit';
 import Registration from './components/Authentication/Registration/Registration';
-import { useEffect } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { check_token } from './Redux/Authslice';
+import { Vortex } from 'react-loader-spinner';
+const Display = lazy(() =>  import('./components/Crud/Display'));
+// const Display = lazy(() => delayForDemo( import('./components/Crud/Display')));
+// function delayForDemo(promise) {
+//   return new Promise(resolve => {
+//     setTimeout(resolve, 5000);
+//   }).then(() => promise);
+// }
 
 function App() {
+
+
   const  dispatch= useDispatch();
   function PrivateRoute({children}) {
     
@@ -75,8 +84,20 @@ function App() {
   useEffect(() => {
     dispatch(check_token())
    }, [])
-
   return (
+
+    // <Suspense fallback={<Vortex
+    //   visible={true}
+    //   height="80"
+    //   width="80"
+    //   margin ="auto"
+    //   ariaLabel="vortex-loading"
+    //   wrapperStyle={{}}
+    //   wrapperClass="vortex-wrapper"
+    //   colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+    // />}>
+    <Suspense fallback={"loading"}>
+
     <div >
       {/* <Router>
         <Header/>
@@ -121,6 +142,7 @@ function App() {
         <Footer />
       </Router>
     </div> 
+    </Suspense>
   );
 }
 
