@@ -84,7 +84,7 @@ export default function Registration() {
     };
 
     const RedirectUser = () => {
-            let name = localStorage.getItem("name");
+            let name = localStorage.getItem("name");// getting the namen from local storage set in authslice
             let isInRegistrationPage = window.location.pathname.toLowerCase() === "/register";
         
             if (name !== null && name !== undefined && name !== "") {// conditon to redirect to login

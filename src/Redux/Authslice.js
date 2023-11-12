@@ -67,7 +67,7 @@ export const Authslice= createSlice({
             if (payload?.status === 200) {
               toast(payload?.message)
             state.redirectTo = "/Login";
-            localStorage.setItem("name", payload?.data?.first_name);
+            localStorage.setItem("name", payload?.data?.first_name);// this is used check the condition to redirect to another page
             }else{
               if(payload?.status==201){
                   toast(payload?.message)
